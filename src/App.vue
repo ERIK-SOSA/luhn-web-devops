@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <div class="background"></div>
+    <div v-if="this.$showNaVBarLogin" class="background"></div>
     <v-main>
       <router-view/>
     </v-main>

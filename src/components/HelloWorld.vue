@@ -74,7 +74,12 @@ export default {
         password: this.password
       }
       axios.post("http://localhost:3000/login", data).then((response) => {
-        console.log(response.data);
+        console.log('Data response', response.data);
+        if(response.data) {
+          this.$showNaVBarLogin = false;
+          this.$router.push('/inicio')
+        }
+
       })
     }
   }
