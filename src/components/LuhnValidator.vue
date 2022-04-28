@@ -28,7 +28,8 @@
 </v-container>
 
 </template>
-
+<script src="vue-swal/dist/vue-swal.js"></script>
+<script src="https://unpkg.com/vue-swal"></script>
 <script>
 
 import axios from "axios";
@@ -49,16 +50,20 @@ export default {
         this.setValidation();
       }
       this.loading = false;
+      
     },
     setValidation(){
       let data = {
         creditCardNumber: this.number
       }
+      
       axios.post("http://localhost:3000/validacion-luhn", data).then((response) => {
         console.log('Data response', response.data);
         if(response.data) {
+          this.$swal("¡Listo!","¡Tarjeta valida!","success")
           console.log('numero valido');console.log(true);
         }else{
+          this.$swal("¡Error!","¡Tarjeta no valida!","error")
           console.log('numero no valido');console.log(true);
         }
 

@@ -12,6 +12,7 @@
     "core-js": "^3.8.3",
     "vue": "^2.6.14",
     "vue-router": "^3.5.1",
+    "vue-swal": "^1.0.0",
     "vuetify": "^2.6.0"
   },
   "devDependencies": {
@@ -33,7 +34,7 @@
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
-  "rules": { 
-    "no-unused-vars": "off" 
-}
+  "rules": {
+    "no-unused-vars": "off"
+  }
 }
