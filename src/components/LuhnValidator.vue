@@ -57,16 +57,19 @@ export default {
         creditCardNumber: this.number
       }
       
-      axios.post("http://localhost:3000/validacion-luhn", data).then((response) => {
+      axios.post("http://localhost:3000/validartarjeta", data).then((response) => {
         console.log('Data response', response.data);
-        if(response.data) {
-          this.$swal("¡Listo!","¡Tarjeta valida!","success")
-          console.log('numero valido');console.log(true);
+        if(response.data.result) {
+          this.$swal("¡Listo!",response.data.message,"success");
+          console.log('numero valido');
         }else{
-          this.$swal("¡Error!","¡Tarjeta no valida!","error")
-          console.log('numero no valido');console.log(true);
+          this.$swal("¡Error!", response.data.message,"error");
+          console.log('numero no valido');
         }
-
+      }).catch( error => {
+        // handle error
+        // console.log('Error catched: ' , error.response.data);
+        this.$swal("¡Error!", error.response.data.message,"warning")
       })
     }
   }
