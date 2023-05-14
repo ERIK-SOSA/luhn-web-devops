@@ -41,6 +41,7 @@ export default {
   data: () => ({
     number: null,
     loading: false,
+    api_endpoint: process.env.VUE_APP_SERVER_URL+'/validartarjeta'
   }),
 
   methods: {
@@ -56,8 +57,9 @@ export default {
       let data = {
         creditCardNumber: this.number
       }
-      
-      axios.post("http://localhost:3000/validartarjeta", data).then((response) => {
+      console.log('ENVIRONMENT_URL: ', process.env.VUE_APP_SERVER_URL)
+      console.log('ENVIRONMENT_URL: ', this.api_endpoint)
+      axios.post(this.api_endpoint || "http://localhost:3000/validartarjeta", data).then((response) => {
         console.log('Data response', response.data);
         if(response.data.result) {
           this.$swal("¡Listo!",response.data.message,"success");
